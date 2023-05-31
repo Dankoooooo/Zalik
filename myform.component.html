@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Currency Conversion
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="floating">Enter a number:</ion-label>
+    <ion-input type="number" [(ngModel)]="number"></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" (click)="calculateMinimumNotes()">Calculate</ion-button>
+
+  <ion-item *ngIf="minimumNotes.length > 0">
+    <ion-label>Minimum number of notes:</ion-label>
+  </ion-item>
+
+  <ion-grid *ngIf="minimumNotes.length > 0">
+    <ion-row>
+      <ion-col size="6">Denomination</ion-col>
+      <ion-col size="6">Quantity</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let note of minimumNotes">
+      <ion-col size="6">{{ note.denomination }}</ion-col>
+      <ion-col size="6">{{ note.quantity }}</ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
